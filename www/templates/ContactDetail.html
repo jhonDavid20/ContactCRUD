@@ -1,0 +1,88 @@
+<ion-view view-title="Contact List">
+        <ion-header-bar class="bar-stable bar-positive">
+          <button class="button icon ion-chevron-left" ng-click="OnChangeRoute('/contactList')"></button>
+          <h1 class="title">{{ updateViewTitle }} </h1>
+        </ion-header-bar>
+  <ion-content ng-controller="starter-controller">
+    <div ng-show="pendingRequest">
+      <div class="flex-center flex-column" style="height: 100vh;">
+        <ion-spinner icon="ios" class="spinner-positive"></ion-spinner>
+          <p>Loading Contact Details...<p>
+      </div>
+    </div>
+<div class = "detailShow">
+<ul class="list">
+    <li class="item animated fadeInUp">
+    <div class="card">
+        <div class="item item-text-wrap">
+            <div class = "grid" ng-click="OnChangeRoute('/detailcontact/' + contact.id)">    
+                <div class="row">
+                    <div class="col col-50">
+                        <h2><i class="icon ion-person"></i> Name: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.name || "No name given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="fa fa-address-book"></i> Address: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.address.address || "No address given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="fa fa-address-card"></i> City: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.address.city || "No city given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="icon ion-card"></i> Identification: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.identification || "No identification given" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="item item-text-wrap">
+            <div class = "grid" ng-click="OnChangeRoute('/detailcontact/' + contact.id)">    
+                <div class="row">
+                    <div class="col col-50">
+                        <h2><i class="icon ion-iphone"></i> Primary Phone: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.phonePrimary || "No Phone Primary given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="icon ion-iphone"></i> Secondary Phone: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.phoneSecondary || "No Phone Secondary given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="icon ion-iphone"></i>  Mobile: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.mobile || "No Mobile given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="icon ion-printer"></i> Fax: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.fax || "No Fax given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="icon ion-email"></i> Email: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.email || "No Email given" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="item item-text-wrap">
+            <div class = "grid" ng-click="OnChangeRoute('/detailcontact/' + contact.id)">    
+                <div class="row">
+                    <div class="col col-50">
+                        <h2><i class="fa fa-briefcase"></i> Type: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.type[0] || "No type given" }}</p>
+                    </div>
+                    <div class="col col-50">
+                        <h2><i class="fa fa-eye"></i> Observation: </h2>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.observation || "No Observation given" }}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    </ul>
+    </div>
+</ion-content>
+</ion-view>

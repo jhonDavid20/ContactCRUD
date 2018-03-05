@@ -1,0 +1,21 @@
+/* Empty. Add your own CSS if you like */
+
+
+
+.bar-light {
+    -webkit-box-shadow: 2px 2px 5px #999;
+    -moz-box-shadow: 2px 2px 5px #999;
+    filter: shadow(color=#999999, direction=135, strength=2);
+}
+  
+  
+.item{
+    margin-bottom: 10px;
+}
+
+.ButtonsContainer{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}

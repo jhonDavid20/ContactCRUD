@@ -1,0 +1,71 @@
+<ion-view view-title="Contact List">
+    <ion-header-bar class="bar-stable bar-positive">
+      <button class="button icon ion-chevron-left" ng-click="OnChangeRoute('/contactList')"></button>
+      <h1 class="title">{{ updateViewTitle || "Add new Contact" }} </h1>
+    </ion-header-bar>
+    <ion-content ng-controller="starter-controller">
+        <div ng-show="pendingRequest">
+            <div class="flex-center flex-column" style="height: 100vh;">
+                <ion-spinner icon="ios" class="spinner-positive"></ion-spinner>
+                    <p>Loading Contact...<p>
+                </div>
+            </div>
+        <div class="list list-inset">
+            <label class="item item-input ">
+                <span class="input-label">First Name:</span>
+                <input type="text" id="name" placeholder="" value = "{{contact.name}}" ng-model=contact.name>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Email:</span>
+                <input type="text" placeholder="" value = "{{contact.email}}" ng-model=contact.email>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Identification:</span>
+                <input type="text" id = "id"placeholder="" value = "{{contact.identification}}" ng-model=contact.identification>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Primary Phone:</span>
+                <input type="text" placeholder="" value = "{{contact.phonePrimary}}" ng-model=contact.phonePrimary>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Secondary Phone:</span>
+                <input type="text" placeholder="" value = "{{contact.phoneSecondary}}" ng-model=contact.phoneSecondary>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Fax:</span>
+                <input type="text" placeholder="" value = "{{contact.fax}}" ng-model=contact.fax>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Mobile:</span>
+                <input type="text" placeholder="" value = "{{contact.mobile}}" ng-model=contact.mobile>
+            </label>
+            <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">Type:</div>
+                    <select ng-model = "contact.type[0]">
+                        <option ng-selected="contact.type[0] =='Client'">Client</option>
+                        <option ng-selected="contact.type[0] =='Provider'">Provider</option>
+                    </select>
+                </label>
+                </div>
+            <label class="item item-input ">
+                <span class="input-label">Dirección:</span>
+                <input type="text" placeholder="" value = "{{contact.address.address}}" ng-model=contact.address.address>
+            </label>
+            <label class="item item-input ">
+                    <span class="input-label">City:</span>
+                <input type="text" placeholder="" value = "{{contact.address.city}}" ng-model=contact.address.city>
+            </label>
+            <label class="item item-input ">
+                <span class="input-label">Observations:</span>
+                <input type="text" placeholder="" value = "{{contact.observation}}" ng-model=contact.observation>
+            </label>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar-light">
+        <div class = "ButtonsContainer"> 
+            <a class="button button-icon ion-checkmark-circled" ng-click = "MakeChanges(contact)"></a>
+            <a class="button button-icon ion-close-circled" ng-click = OnChangeRoute("'/contactList'")></a>
+            </div>  
+    </ion-footer-bar>
+</ion-view>

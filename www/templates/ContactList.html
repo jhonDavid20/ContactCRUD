@@ -1,0 +1,78 @@
+<ion-view view-title="Contact List">
+    <ion-header-bar class="bar-stable bar-positive"> 
+      <h1 class="title">Contacts</h1>
+      <div class="item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios-search placeholder-icon"></i>
+          <input type="search" placeholder="Search Contact" ng-model="searchQuery">
+        </label>
+      </div>
+    </ion-header-bar>
+    <ion-floating-button
+        ng-click="OnChangeRoute('/newcontact')" 
+        button-color="#0099CC" 
+        icon="ion-person-add" 
+        icon-color="#ffffff" 
+        button-class="hoverable z-depth-1">
+    </ion-floating-button>
+    <ion-content ng-controller="starter-controller">
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        <div ng-show="pendingRequest">
+            <div class="flex-center flex-column" style="height: 100vh;">
+                <ion-spinner icon="ios" class="spinner-positive"></ion-spinner>
+                <p>Loading Contacts...</p>
+            </div>
+        </div>
+        <div>
+            <ul class="list">
+                <li class="item animated fadeInUp" ng-repeat="contact in contactsList | filter:{name: searchQuery}">
+                    <div class="card">
+                        <div class="item item-text-wrap">
+                            <div class = "grid" ng-click="OnChangeRoute('/detailcontact/' + contact.id)">    
+                                <div class="row">
+                                    <div class="col col-50">
+                                        <h2><i class="icon ion-person"></i> Name: </h2>
+                                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.name || "No name given" }}</p>
+                                    </div>
+                                    <div class="col col-50">
+                                        <h2><i class="icon ion-card"></i> Identification: </h2>
+                                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.identification || "No identification given" }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col col-50">
+                                        <h2><i class="icon ion-email"></i> Email: </h2>
+                                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.email || "No email given" }}</p>
+                                    </div>
+                                    <div class="col col-50">
+                                        <h2><i class="icon ion-printer"></i> Fax: </h2>
+                                        <p>&nbsp;&nbsp;&nbsp;&nbsp; {{ contact.fax || "No fax given" }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col col-50">
+                                        <h2><i class="icon ion-iphone"></i> Primary Phone: </h2>
+                                        <p>&nbsp;&nbsp;&nbsp; {{ contact.phonePrimary || "No primary phone given" }}</p>
+                                    </div>
+                                    <div class="col col-50">
+                                        <h2><i class="icon ion-iphone"></i> Secondary Phone: </h2>
+                                        <p>&nbsp;&nbsp;&nbsp; {{ contact.phoneSecondary || "No secondary phone given" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-left: 30%;">
+                                <button class="button icon-left ion-refresh z-depth-2 button-clear button-positive" ng-click="OnChangeRoute('/editcontact/' + contact.id)">Update</button>
+                                <button class="button icon-left ion-trash-b z-depth-2 button-clear button-assertive" ng-click="OnContactDelete(contact.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>
